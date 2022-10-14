@@ -1,0 +1,22 @@
+{
+  "name": "uptrace/uptrace",
+  "description": "OpenTelemetry PHP distribution for Uptrace",
+  "type": "library",
+  "require": {
+    "open-telemetry/opentelemetry": "0.0.15",
+    "php-http/guzzle7-adapter": "1.x-dev"
+  },
+  "license": "Apache-2.0",
+  "autoload": {
+    "psr-4": {
+      "Uptrace\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Vladimir Mihailenco",
+      "email": "vladimir.webdev@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev"
+}
