@@ -13,6 +13,7 @@ use OpenTelemetry\SDK\Trace\SpanProcessorFactory;
 use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
 use OpenTelemetry\SDK\Common\Environment\Variables as Env;
 use OpenTelemetry\SDK\Common\Environment\KnownValues as Values;
+use OpenTelemetry\SDK\Common\Log\LoggerHolder;
 
 class Uptrace {
 	private Dsn $dsn;
@@ -21,7 +22,7 @@ class Uptrace {
         if ($uptraceDsn == null) {
             $uptraceDsn = getenv('UPTRACE_DSN');
             if (!$uptraceDsn) {
-                $msg = "DSN is empty (pass first arg or define UPTRACE_DSN env var)";
+                $msg = 'DSN is empty (pass first arg or define UPTRACE_DSN env var)';
                 throw new InvalidArgumentException($msg);
             }
         }
@@ -29,12 +30,12 @@ class Uptrace {
     }
 
     public function createTracerProvider() {
-        putenv(sprintf("%s=%s", Env::OTEL_PHP_TRACES_PROCESSOR, Values::VALUE_BATCH));
+        putenv(sprintf('%s=%s', Env::OTEL_PHP_TRACES_PROCESSOR, Values::VALUE_BATCH));
         putenv(sprintf(
-            "OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=%s/v1/traces",
+            'OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=%s/v1/traces',
             $this->dsn->otlpEndpoint,
         ));
-        putenv(sprintf("OTEL_EXPORTER_OTLP_HEADERS=uptrace-dsn=%s", $this->dsn->dsn));
+        putenv(sprintf('OTEL_EXPORTER_OTLP_HEADERS=uptrace-dsn=%s', $this->dsn->dsn));
 
         $processorFactory = new SpanProcessorFactory();
         $exporter = new OtlpHttpExporter(
@@ -52,21 +53,21 @@ class Uptrace {
             $span = Span::getCurrent();
         }
         $context = $span->getContext();
-        return sprintf("%s/traces/%s", $this->dsn->appEndpoint, $context->getTraceId());
+        return sprintf('%s/traces/%s', $this->dsn->appEndpoint, $context->getTraceId());
     }
 }
 
 class Dsn {
-    public string $dsn = "";
-    public string $appEndpoint = "";
-    public string $otlpEndpoint = "";
+    public string $dsn = '';
+    public string $appEndpoint = '';
+    public string $otlpEndpoint = '';
 
-	private string $scheme = "";
-	private string $host = "";
+	private string $scheme = '';
+	private string $host = '';
 	private int $port = 14318;
 
-	private string $projectID = "";
-	private string $token = "";
+	private string $projectID = '';
+	private string $token = '';
 
     public function __construct($str) {
         $url = parse_url($str);
@@ -77,17 +78,20 @@ class Dsn {
 
         $this->scheme = $url['scheme'];
         $this->host = $url['host'];
-        $this->port = $url['port'];
-        switch ($this->port) { // fix common mistake
+        $this->port = $url['port'] ?? 0;
+        $this->projectID = $url['path'];
+        $this->token = $url['user'];
+
+        if ($this->host == 'api.uptrace.dev') {
+            $this->host = 'uptrace.dev';
+        }
+
+        switch ($this->port) {
         case 4317:
-            $this->port = 4318;
-            break;
         case 14317:
-            $this->port = 14318;
+            echo sprintf('got port %d (OTLP/gRPC), but uptrace-php uses OTLP/HTTP', $this->port);
             break;
         }
-        $this->projectID = $url['path'];
-        $this->token = $url["user"];
 
         $this->dsn = $str;
         $this->appEndpoint = $this->getAppEndpoint();
@@ -95,16 +99,16 @@ class Dsn {
     }
 
     private function getAppEndpoint(): string {
-        if ($this->host == "uptrace.dev") {
-            return "https://app.uptrace.dev";
+        if ($this->host == 'uptrace.dev') {
+            return 'https://app.uptrace.dev';
         }
-        return sprintf("%s://%s:%d", $this->scheme, $this->host, $this->port);
+        return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->port);
     }
 
     private function getOtlpEndpoint(): string {
-        if ($this->host == "uptrace.dev") {
-            return "https://otlp.uptrace.dev:4318";
+        if ($this->host == 'uptrace.dev') {
+            return 'https://otlp.uptrace.dev';
         }
-        return sprintf("%s://%s:%d", $this->scheme, $this->host, $this->port);
+        return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->port);
     }
 }
