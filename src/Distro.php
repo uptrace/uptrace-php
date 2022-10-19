@@ -28,7 +28,7 @@ class Distro {
         $serviceVersion = $conf->getServiceVersion();
 
         if ($dsn == '') {
-            $msg = 'Uptrace DSN is empty (use UPTRACE_DSN env var)';
+            $msg = 'Uptrace DSN is empty (provide UPTRACE_DSN env var)';
             throw new InvalidArgumentException($msg);
         }
         $this->dsn = new Dsn($dsn);

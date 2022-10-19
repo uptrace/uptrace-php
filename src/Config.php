@@ -9,8 +9,14 @@ class Config {
     private string $serviceName = '';
     private string $serviceVersion = '';
 
-    public function __construct(?string $uptraceDsn = null) {
-        $this->dsn = $uptraceDsn ?? getenv('UPTRACE_DSN');
+    public function __construct(?string $uptraceDsn = '') {
+        $this->dsn = $uptraceDsn;
+        if (empty($this->dsn)) {
+            $env = getenv('UPTRACE_DSN');
+            if (!empty($env)) {
+                $this->dsn = $env;
+            }
+        }
     }
 
     public function setDsn(string $dsn): Config {
