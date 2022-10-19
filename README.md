@@ -37,13 +37,15 @@ Run the [basic example](example/basic) below using the DSN from the Uptrace proj
 declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
 
-use Uptrace\Uptrace;
-use OpenTelemetry\SemConv\ResourceAttributes;
 use OpenTelemetry\API\Trace\SpanKind;
 
-putenv(sprintf('OTEL_SERVICE_NAME=myservice'));
+$conf = new Uptrace\Config();
+// copy your project DSN here or use UPTRACE_DSN env var
+//$conf->setDsn('https://<token>@uptrace.dev/<project_id>');
+$conf->setServiceName('myservice');
+$conf->setServiceVersion('1.0.0');
 
-$uptrace = new Uptrace();
+$uptrace = new Uptrace\Distro($conf);
 $tracerProvider = $uptrace->createTracerProvider();
 
 // Create a tracer. Usually, tracer is a global variable.

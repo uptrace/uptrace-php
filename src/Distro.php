@@ -15,21 +15,37 @@ use OpenTelemetry\SDK\Common\Environment\Variables as Env;
 use OpenTelemetry\SDK\Common\Environment\KnownValues as Values;
 use OpenTelemetry\SDK\Common\Log\LoggerHolder;
 
-class Uptrace {
+class Distro {
 	private Dsn $dsn;
 
-    public function __construct(?string $uptraceDsn = null) {
-        if ($uptraceDsn == null) {
-            $uptraceDsn = getenv('UPTRACE_DSN');
-            if (!$uptraceDsn) {
-                $msg = 'DSN is empty (pass first arg or define UPTRACE_DSN env var)';
-                throw new InvalidArgumentException($msg);
-            }
+    public function __construct(?Config $conf = null) {
+        if ($conf == null) {
+            $conf = new Config();
         }
-        $this->dsn = new Dsn($uptraceDsn);
+
+        $dsn = $conf->getDsn();
+        $serviceName = $conf->getServiceName();
+        $serviceVersion = $conf->getServiceVersion();
+
+        if ($dsn == '') {
+            $msg = 'Uptrace DSN is empty (use UPTRACE_DSN env var)';
+            throw new InvalidArgumentException($msg);
+        }
+        $this->dsn = new Dsn($dsn);
+
+        $resource = array_filter([
+            getenv('OTEL_RESOURCE_ATTRIBUTES'),
+        ]);
+        if (!empty($serviceName)) {
+            array_push($resource, sprintf('service.name=%s', $serviceName));
+        }
+        if (!empty($serviceVersion)) {
+            array_push($resource, sprintf('service.version=%s', $serviceVersion));
+        }
+        putenv(sprintf('OTEL_RESOURCE_ATTRIBUTES=%s', implode(',', $resource)));
     }
 
-    public function createTracerProvider() {
+    public function createTracerProvider(): TracerProvider {
         putenv(sprintf('%s=%s', Env::OTEL_PHP_TRACES_PROCESSOR, Values::VALUE_BATCH));
         putenv(sprintf(
             'OTEL_EXPORTER_OTLP_TRACES_ENDPOINT=%s/v1/traces',
