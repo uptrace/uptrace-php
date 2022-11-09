@@ -8,6 +8,7 @@ class Config {
     private string $dsn = '';
     private string $serviceName = '';
     private string $serviceVersion = '';
+    private string $deploymentEnvironment = '';
 
     public function __construct(?string $uptraceDsn = '') {
         $this->dsn = $uptraceDsn;
@@ -44,5 +45,14 @@ class Config {
 
     public function getServiceVersion(): string {
         return $this->serviceVersion;
+    }
+
+    public function setDeploymentEnvironment(string $deploymentEnvironment): Config {
+        $this->deploymentEnvironment = $deploymentEnvironment;
+        return $this;
+    }
+
+    public function getDeploymentEnvironment(): string {
+        return $this->deploymentEnvironment;
     }
 }

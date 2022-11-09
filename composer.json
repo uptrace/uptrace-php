@@ -3,8 +3,8 @@
   "description": "OpenTelemetry PHP distribution for Uptrace",
   "type": "library",
   "require": {
-    "open-telemetry/opentelemetry": "0.0.15",
-    "php-http/guzzle7-adapter": "1.x-dev"
+    "open-telemetry/opentelemetry": "0.0.16",
+    "php-http/guzzle7-adapter": "1.0.0"
   },
   "license": "Apache-2.0",
   "autoload": {
