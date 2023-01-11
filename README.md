@@ -1,9 +1,9 @@
 # Uptrace for PHP
 
-[![Documentation](https://img.shields.io/badge/uptrace-documentation-informational)](https://uptrace.dev/get/uptrace-php.html)
+[![Documentation](https://img.shields.io/badge/uptrace-documentation-informational)](https://uptrace.dev/get/opentelemetry-php.html)
 [![Chat](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/uptrace)
 
-<a href="https://uptrace.dev/get/uptrace-php.html">
+<a href="https://uptrace.dev/get/opentelemetry-php.html">
   <img src="https://uptrace.dev/get/devicon/php-original.svg" height="200px" />
 </a>
 
@@ -89,5 +89,5 @@ $tracerProvider->shutdown();
 ## Links
 
 - [Examples](example)
-- [Documentation](https://uptrace.dev/get/uptrace-php.html)
-- [Instrumentations](https://uptrace.dev/opentelemetry/instrumentations/?lang=php)
+- [Documentation](https://uptrace.dev/get/opentelemetry-php.html)
+- [OpenTelemetry PHP Instrumentations](https://uptrace.dev/opentelemetry/instrumentations/?lang=php)
