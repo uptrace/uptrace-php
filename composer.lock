@@ -4,78 +4,169 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "712a6c52a0e23c035ef5c911175f8fa9",
+    "content-hash": "8eba7fbe376dadc6bc170cfcc540bfba",
     "packages": [
         {
-            "name": "cloudevents/sdk-php",
-            "version": "v1.0.1",
+            "name": "aws/aws-crt-php",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/cloudevents/sdk-php.git",
-                "reference": "602cd26557e5522060531b3103450b34b678be1c"
+                "url": "https://github.com/awslabs/aws-crt-php.git",
+                "reference": "1926277fc71d253dfa820271ac5987bdb193ccf5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cloudevents/sdk-php/zipball/602cd26557e5522060531b3103450b34b678be1c",
-                "reference": "602cd26557e5522060531b3103450b34b678be1c",
+                "url": "https://api.github.com/repos/awslabs/aws-crt-php/zipball/1926277fc71d253dfa820271ac5987bdb193ccf5",
+                "reference": "1926277fc71d253dfa820271ac5987bdb193ccf5",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "ext-pcre": "*",
-                "php": "^7.4 || ^8.0",
-                "symfony/polyfill-php80": "^1.17"
+                "php": ">=5.5"
             },
             "require-dev": {
-                "guzzlehttp/psr7": "^2.0",
-                "php-http/discovery": "^1.14",
-                "phpunit/phpunit": "^9.5 || ^10.0",
-                "psalm/phar": "4.15.0",
-                "psr/http-factory": "^1.0.1",
-                "psr/http-message": "^1.0.1",
-                "squizlabs/php_codesniffer": "3.6.0"
+                "phpunit/phpunit": "^4.8.35||^5.6.3||^9.5",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "suggest": {
-                "php-http/discovery": "Required for automatic discovery of HTTP message factories in the HTTP Marshaller.",
-                "psr/http-factory": "Required for use of the HTTP Marshaller.",
-                "psr/http-factory-implementation": "Required for use of the HTTP Marshaller.",
-                "psr/http-message": "Required for use of the HTTP Marshaller and Unmarshaller.",
-                "psr/http-message-implementation": "Required for use of the HTTP Marshaller and Unmarshaller."
+                "ext-awscrt": "Make sure you install awscrt native extension to use any of the functionality."
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "AWS SDK Common Runtime Team",
+                    "email": "aws-sdk-common-runtime@amazon.com"
+                }
+            ],
+            "description": "AWS Common Runtime for PHP",
+            "homepage": "https://github.com/awslabs/aws-crt-php",
+            "keywords": [
+                "amazon",
+                "aws",
+                "crt",
+                "sdk"
+            ],
+            "support": {
+                "issues": "https://github.com/awslabs/aws-crt-php/issues",
+                "source": "https://github.com/awslabs/aws-crt-php/tree/v1.2.1"
+            },
+            "time": "2023-03-24T20:22:19+00:00"
+        },
+        {
+            "name": "aws/aws-sdk-php",
+            "version": "3.268.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aws/aws-sdk-php.git",
+                "reference": "3a8fbbe9512aa007b231f3c838c7ead3680740b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3a8fbbe9512aa007b231f3c838c7ead3680740b4",
+                "reference": "3a8fbbe9512aa007b231f3c838c7ead3680740b4",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-crt-php": "^1.0.4",
+                "ext-json": "*",
+                "ext-pcre": "*",
+                "ext-simplexml": "*",
+                "guzzlehttp/guzzle": "^6.5.8 || ^7.4.5",
+                "guzzlehttp/promises": "^1.4.0",
+                "guzzlehttp/psr7": "^1.9.1 || ^2.4.5",
+                "mtdowling/jmespath.php": "^2.6",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "andrewsville/php-token-reflection": "^1.4",
+                "aws/aws-php-sns-message-validator": "~1.0",
+                "behat/behat": "~3.0",
+                "composer/composer": "^1.10.22",
+                "dms/phpunit-arraysubset-asserts": "^0.4.0",
+                "doctrine/cache": "~1.4",
+                "ext-dom": "*",
+                "ext-openssl": "*",
+                "ext-pcntl": "*",
+                "ext-sockets": "*",
+                "nette/neon": "^2.3",
+                "paragonie/random_compat": ">= 2",
+                "phpunit/phpunit": "^4.8.35 || ^5.6.3 || ^9.5",
+                "psr/cache": "^1.0",
+                "psr/http-message": "^1.0",
+                "psr/simple-cache": "^1.0",
+                "sebastian/comparator": "^1.2.3 || ^4.0",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "suggest": {
+                "aws/aws-php-sns-message-validator": "To validate incoming SNS notifications",
+                "doctrine/cache": "To use the DoctrineCacheAdapter",
+                "ext-curl": "To send requests using cURL",
+                "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages",
+                "ext-sockets": "To use client-side monitoring"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
                 "psr-4": {
-                    "CloudEvents\\": "src/"
+                    "Aws\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
-            "description": "CloudEvents SDK",
+            "authors": [
+                {
+                    "name": "Amazon Web Services",
+                    "homepage": "http://aws.amazon.com"
+                }
+            ],
+            "description": "AWS SDK for PHP - Use Amazon Web Services in your PHP project",
+            "homepage": "http://aws.amazon.com/sdkforphp",
+            "keywords": [
+                "amazon",
+                "aws",
+                "cloud",
+                "dynamodb",
+                "ec2",
+                "glacier",
+                "s3",
+                "sdk"
+            ],
             "support": {
-                "issues": "https://github.com/cloudevents/sdk-php/issues",
-                "source": "https://github.com/cloudevents/sdk-php"
+                "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
+                "issues": "https://github.com/aws/aws-sdk-php/issues",
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.268.17"
             },
-            "time": "2021-12-15T21:41:40+00:00"
+            "time": "2023-04-24T18:22:00+00:00"
         },
         {
             "name": "google/protobuf",
-            "version": "v3.21.9",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "1bf02c57f260c5eea5e75a35c1a943fe943a188a"
+                "reference": "0edeee0cc2e2991706e16ab60c7d224e5c0241ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/1bf02c57f260c5eea5e75a35c1a943fe943a188a",
-                "reference": "1bf02c57f260c5eea5e75a35c1a943fe943a188a",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/0edeee0cc2e2991706e16ab60c7d224e5c0241ba",
+                "reference": "0edeee0cc2e2991706e16ab60c7d224e5c0241ba",
                 "shasum": ""
             },
             "require": {
@@ -87,6 +178,7 @@
             "suggest": {
                 "ext-bcmath": "Need to support JSON deserialization"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -104,72 +196,28 @@
                 "proto"
             ],
             "support": {
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.21.9"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.22.3"
             },
-            "time": "2022-10-26T20:30:45+00:00"
-        },
-        {
-            "name": "grpc/grpc",
-            "version": "1.42.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/grpc/grpc-php.git",
-                "reference": "9fa44f104cb92e924d4da547323a97f3d8aca6d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/grpc/grpc-php/zipball/9fa44f104cb92e924d4da547323a97f3d8aca6d4",
-                "reference": "9fa44f104cb92e924d4da547323a97f3d8aca6d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0"
-            },
-            "require-dev": {
-                "google/auth": "^v1.3.0"
-            },
-            "suggest": {
-                "ext-protobuf": "For better performance, install the protobuf C extension.",
-                "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Grpc\\": "src/lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "description": "gRPC library for PHP",
-            "homepage": "https://grpc.io",
-            "keywords": [
-                "rpc"
-            ],
-            "support": {
-                "source": "https://github.com/grpc/grpc-php/tree/v1.42.0"
-            },
-            "time": "2021-11-19T08:13:51+00:00"
+            "time": "2023-04-12T23:38:34+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master",
+            "version": "7.5.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "8459341c16f96b9610dcdfe22bd3060d60c0da04"
+                "reference": "255d7157b463ee2d9b3cbf891eda2691baa43076"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/8459341c16f96b9610dcdfe22bd3060d60c0da04",
-                "reference": "8459341c16f96b9610dcdfe22bd3060d60c0da04",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/255d7157b463ee2d9b3cbf891eda2691baa43076",
+                "reference": "255d7157b463ee2d9b3cbf891eda2691baa43076",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/promises": "^1.5",
-                "guzzlehttp/psr7": "^1.9 || ^2.4",
+                "guzzlehttp/psr7": "^1.9.1 || ^2.4.5",
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-client": "^1.0",
                 "symfony/deprecation-contracts": "^2.2 || ^3.0"
@@ -195,9 +243,6 @@
                 "bamarni-bin": {
                     "bin-links": true,
                     "forward-command": false
-                },
-                "branch-alias": {
-                    "dev-master": "7.5-dev"
                 }
             },
             "autoload": {
@@ -263,7 +308,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/master"
+                "source": "https://github.com/guzzle/guzzle/tree/7.5"
             },
             "funding": [
                 {
@@ -279,7 +324,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-08-29T11:03:19+00:00"
+            "time": "2023-04-18T08:37:42+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -368,22 +413,22 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "dev-master",
+            "version": "2.6.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "67c26b443f348a51926030c83481b85718457d3d"
+                "reference": "b635f279edd83fc275f822a1188157ffea568ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/67c26b443f348a51926030c83481b85718457d3d",
-                "reference": "67c26b443f348a51926030c83481b85718457d3d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/b635f279edd83fc275f822a1188157ffea568ff6",
+                "reference": "b635f279edd83fc275f822a1188157ffea568ff6",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2.5 || ^8.0",
                 "psr/http-factory": "^1.0",
-                "psr/http-message": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0",
                 "ralouphie/getallheaders": "^3.0"
             },
             "provide": {
@@ -398,15 +443,11 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "bamarni-bin": {
                     "bin-links": true,
                     "forward-command": false
-                },
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
                 }
             },
             "autoload": {
@@ -468,7 +509,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.4.3"
+                "source": "https://github.com/guzzle/psr7/tree/2.5.0"
             },
             "funding": [
                 {
@@ -484,96 +525,100 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-10-26T14:07:24+00:00"
+            "time": "2023-04-17T16:11:26+00:00"
         },
         {
-            "name": "open-telemetry/opentelemetry",
-            "version": "0.0.16",
+            "name": "mtdowling/jmespath.php",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/open-telemetry/opentelemetry-php.git",
-                "reference": "92e7a0d0706f2bf37c4023d19247c2ac6b3511d4"
+                "url": "https://github.com/jmespath/jmespath.php.git",
+                "reference": "9b87907a81b87bc76d19a7fb2d61e61486ee9edb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/open-telemetry/opentelemetry-php/zipball/92e7a0d0706f2bf37c4023d19247c2ac6b3511d4",
-                "reference": "92e7a0d0706f2bf37c4023d19247c2ac6b3511d4",
+                "url": "https://api.github.com/repos/jmespath/jmespath.php/zipball/9b87907a81b87bc76d19a7fb2d61e61486ee9edb",
+                "reference": "9b87907a81b87bc76d19a7fb2d61e61486ee9edb",
                 "shasum": ""
             },
             "require": {
-                "cloudevents/sdk-php": "^v1.0.1",
-                "ext-json": "*",
-                "google/protobuf": "^3.3.0",
-                "grpc/grpc": "^1.30",
-                "packaged/thrift": "^0.15.0",
+                "php": "^5.4 || ^7.0 || ^8.0",
+                "symfony/polyfill-mbstring": "^1.17"
+            },
+            "require-dev": {
+                "composer/xdebug-handler": "^1.4 || ^2.0",
+                "phpunit/phpunit": "^4.8.36 || ^7.5.15"
+            },
+            "default-branch": true,
+            "bin": [
+                "bin/jp.php"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/JmesPath.php"
+                ],
+                "psr-4": {
+                    "JmesPath\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Declaratively specify how to extract elements from a JSON document",
+            "keywords": [
+                "json",
+                "jsonpath"
+            ],
+            "support": {
+                "issues": "https://github.com/jmespath/jmespath.php/issues",
+                "source": "https://github.com/jmespath/jmespath.php/tree/2.6.1"
+            },
+            "time": "2021-06-14T00:11:39+00:00"
+        },
+        {
+            "name": "open-telemetry/api",
+            "version": "1.0.0beta7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentelemetry-php/api.git",
+                "reference": "9feef0ae9fcc356cb47959d9576bb6c7ea2e4947"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentelemetry-php/api/zipball/9feef0ae9fcc356cb47959d9576bb6c7ea2e4947",
+                "reference": "9feef0ae9fcc356cb47959d9576bb6c7ea2e4947",
+                "shasum": ""
+            },
+            "require": {
+                "open-telemetry/context": "^1.0",
+                "open-telemetry/sem-conv": "^1.0",
                 "php": "^7.4 || ^8.0",
-                "php-http/async-client-implementation": "^1.0",
-                "php-http/discovery": "^1.14",
-                "promphp/prometheus_client_php": "^2.2.1",
-                "psr/http-factory-implementation": "^1.0",
                 "psr/log": "^1.1|^2.0|^3.0",
-                "symfony/polyfill-mbstring": "^1.23",
                 "symfony/polyfill-php80": "^1.26",
                 "symfony/polyfill-php81": "^1.26",
                 "symfony/polyfill-php82": "^1.26"
             },
-            "replace": {
-                "open-telemetry/api": "self.version",
-                "open-telemetry/context": "self.version",
-                "open-telemetry/gen-jaeger-thrift": "self.version",
-                "open-telemetry/gen-otlp-protobuf": "self.version",
-                "open-telemetry/sdk": "self.version",
-                "open-telemetry/sdk-contrib": "self.version",
-                "open-telemetry/sem-conv": "self.version"
-            },
-            "require-dev": {
-                "assertwell/phpunit-global-state": "^0.2.1",
-                "composer/xdebug-handler": "^2.0",
-                "dg/bypass-finals": "^1.3",
-                "ext-grpc": "*",
-                "friendsofphp/php-cs-fixer": "^3.4",
-                "guzzlehttp/guzzle": "^7.4",
-                "guzzlehttp/psr7": "^2.1",
-                "mikey179/vfsstream": "^1.6",
-                "mockery/mockery": "^1.4",
-                "monolog/monolog": "^2.3",
-                "nyholm/psr7": "^1.4",
-                "open-telemetry/dev-tools": "dev-main",
-                "phan/phan": "^5.0",
-                "php-http/mock-client": "^1.5",
-                "phpbench/phpbench": "^1.2",
-                "phpmetrics/phpmetrics": "^2.7",
-                "phpspec/prophecy-phpunit": "^2.0",
-                "phpstan/phpstan": "^1.1",
-                "phpstan/phpstan-mockery": "^1.0",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.3",
-                "psalm/plugin-mockery": "^0.9",
-                "psalm/plugin-phpunit": "^0.16",
-                "psalm/psalm": "^4.0",
-                "qossmic/deptrac-shim": "^0.24",
-                "rector/rector": "^0.13.7",
-                "symfony/http-client": "^5.2"
-            },
-            "suggest": {
-                "ext-gmp": "To support unlimited number of synchronous metric readers",
-                "ext-grpc": "To use the OTLP GRPC Exporter",
-                "ext-protobuf": "For more performant protobuf/grpc exporting",
-                "ext-sockets": "To use the Thrift UDP Exporter for the Jaeger Agent"
-            },
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/Context/fiber/initialize_fiber_handler.php",
-                    "src/API/Trace/functions.php",
-                    "src/SDK/Common/Dev/Compatibility/_load.php",
-                    "src/SDK/Common/Util/functions.php"
+                    "Trace/functions.php"
                 ],
                 "psr-4": {
-                    "Jaeger\\Thrift\\": "thrift/jaeger/",
-                    "OpenTelemetry\\": "src/",
-                    "Opentelemetry\\Proto\\": "proto/otel/Opentelemetry/Proto/",
-                    "GPBMetadata\\Opentelemetry\\": "proto/otel/GPBMetadata/Opentelemetry/"
+                    "OpenTelemetry\\API\\": "."
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -582,107 +627,422 @@
             ],
             "authors": [
                 {
-                    "name": "Bob Strecansky",
-                    "email": "bob.strecansky@gmail.com"
-                },
-                {
-                    "name": "Dmitry Krokhin",
-                    "email": "nekufa@gmail.com"
-                },
-                {
-                    "name": "Levi Morrison",
-                    "email": "levim@php.net"
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
                 }
             ],
-            "description": "OpenTelemetry makes robust, portable telemetry a built-in feature of cloud-native software.",
-            "homepage": "https://opentelemetry.io/docs/php",
+            "description": "API for OpenTelemetry PHP.",
             "keywords": [
                 "Metrics",
+                "api",
+                "apm",
                 "logging",
-                "open-telemetry",
                 "opentelemetry",
                 "otel",
                 "tracing"
             ],
             "support": {
-                "issues": "https://github.com/open-telemetry/opentelemetry-php/issues",
-                "source": "https://github.com/open-telemetry/opentelemetry-php/tree/0.0.16"
+                "source": "https://github.com/opentelemetry-php/api/tree/1.0.0beta7"
             },
-            "time": "2022-11-04T22:10:14+00:00"
+            "time": "2023-04-18T12:43:09+00:00"
         },
         {
-            "name": "packaged/thrift",
-            "version": "0.15.0",
+            "name": "open-telemetry/context",
+            "version": "1.0.0beta2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/packaged/thrift.git",
-                "reference": "dbf4e5ff5c85d56ccae62265ed25424b366ce269"
+                "url": "https://github.com/opentelemetry-php/context.git",
+                "reference": "31814464bb54e62e39e79729bbe6b1fd82324897"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/packaged/thrift/zipball/dbf4e5ff5c85d56ccae62265ed25424b366ce269",
-                "reference": "dbf4e5ff5c85d56ccae62265ed25424b366ce269",
+                "url": "https://api.github.com/repos/opentelemetry-php/context/zipball/31814464bb54e62e39e79729bbe6b1fd82324897",
+                "reference": "31814464bb54e62e39e79729bbe6b1fd82324897",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5 || ^7.0 || ^8.0"
+                "php": "^7.4 || ^8.0",
+                "symfony/polyfill-php80": "^1.26",
+                "symfony/polyfill-php81": "^1.26",
+                "symfony/polyfill-php82": "^1.26"
+            },
+            "suggest": {
+                "ext-ffi": "To allow context switching in Fibers"
             },
             "type": "library",
             "autoload": {
+                "files": [
+                    "fiber/initialize_fiber_handler.php"
+                ],
                 "psr-4": {
-                    "Thrift\\": "src/"
+                    "OpenTelemetry\\Context\\": "."
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "Apache-2.0"
             ],
-            "description": "Apache Thrift",
-            "homepage": "http://thrift.apache.org/",
+            "authors": [
+                {
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+                }
+            ],
+            "description": "Context implementation for OpenTelemetry PHP.",
             "keywords": [
-                "apache",
-                "thrift"
+                "Context",
+                "opentelemetry",
+                "otel"
             ],
             "support": {
-                "issues": "https://github.com/packaged/thrift/issues",
-                "source": "https://github.com/packaged/thrift/tree/0.15.0"
+                "source": "https://github.com/opentelemetry-php/context/tree/1.0.0beta2"
             },
-            "time": "2021-09-23T10:34:40+00:00"
+            "time": "2022-11-25T20:26:34+00:00"
         },
         {
-            "name": "php-http/discovery",
-            "version": "1.14.3",
+            "name": "open-telemetry/contrib-aws",
+            "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/php-http/discovery.git",
-                "reference": "31d8ee46d0215108df16a8527c7438e96a4d7735"
+                "url": "https://github.com/opentelemetry-php/contrib-aws.git",
+                "reference": "47b19172b05ba358cd1641032bb3c6d7dac79ac1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/discovery/zipball/31d8ee46d0215108df16a8527c7438e96a4d7735",
-                "reference": "31d8ee46d0215108df16a8527c7438e96a4d7735",
+                "url": "https://api.github.com/repos/opentelemetry-php/contrib-aws/zipball/47b19172b05ba358cd1641032bb3c6d7dac79ac1",
+                "reference": "47b19172b05ba358cd1641032bb3c6d7dac79ac1",
                 "shasum": ""
             },
             "require": {
+                "aws/aws-sdk-php": "^3.232",
+                "open-telemetry/sdk": "^1.0",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "dg/bypass-finals": "^v1.4.1",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "mikey179/vfsstream": "^1.6",
+                "open-telemetry/dev-tools": "dev-main",
+                "phan/phan": "^4.1 || ^5",
+                "php-http/mock-client": "*",
+                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "~9",
+                "psalm/plugin-phpunit": "^0.17.0",
+                "vimeo/psalm": "^4.0"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OpenTelemetry\\Aws\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "opentelemetry-php-contrib contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php-contrib/graphs/contributors"
+                }
+            ],
+            "description": "The Aws package for opentelemetry-php",
+            "keywords": [
+                "aws",
+                "detector",
+                "opentelemetry",
+                "otel",
+                "propagator",
+                "tracing"
+            ],
+            "support": {
+                "source": "https://github.com/opentelemetry-php/contrib-aws/tree/1.0.0beta3"
+            },
+            "time": "2023-01-31T12:52:08+00:00"
+        },
+        {
+            "name": "open-telemetry/exporter-otlp",
+            "version": "1.0.0beta7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentelemetry-php/exporter-otlp.git",
+                "reference": "ef738246f862af5063615154d80307094138a06a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentelemetry-php/exporter-otlp/zipball/ef738246f862af5063615154d80307094138a06a",
+                "reference": "ef738246f862af5063615154d80307094138a06a",
+                "shasum": ""
+            },
+            "require": {
+                "open-telemetry/api": "^1.0",
+                "open-telemetry/gen-otlp-protobuf": "^1.0",
+                "open-telemetry/sdk": "^1.0",
+                "php": "^7.4 || ^8.0",
+                "php-http/discovery": "^1.14"
+            },
+            "suggest": {
+                "php-http/async-client-implementation": "For otlp/http exporting",
+                "php-http/discovery": "For otlp/http exporting",
+                "psr/http-factory-implementation": "For otlp/http exporting"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "_register.php"
+                ],
+                "psr-4": {
+                    "OpenTelemetry\\Contrib\\Otlp\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+                }
+            ],
+            "description": "OTLP exporter for OpenTelemetry.",
+            "keywords": [
+                "Metrics",
+                "exporter",
+                "gRPC",
+                "http",
+                "opentelemetry",
+                "otel",
+                "otlp",
+                "tracing"
+            ],
+            "support": {
+                "issues": "https://github.com/opentelemetry-php/exporter-otlp/issues",
+                "source": "https://github.com/opentelemetry-php/exporter-otlp/tree/1.0.0beta7"
+            },
+            "time": "2023-04-18T12:08:20+00:00"
+        },
+        {
+            "name": "open-telemetry/gen-otlp-protobuf",
+            "version": "1.0.0beta3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentelemetry-php/gen-otlp-protobuf.git",
+                "reference": "aa8a62f28b764e64bde2fd65670cf7f606232394"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentelemetry-php/gen-otlp-protobuf/zipball/aa8a62f28b764e64bde2fd65670cf7f606232394",
+                "reference": "aa8a62f28b764e64bde2fd65670cf7f606232394",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "suggest": {
+                "ext-grpc": "To use the gRPC based exporters",
+                "ext-protobuf": "For better performance, when dealing with the protobuf format",
+                "google/protobuf": "To get started quickly, install the native protobuf library."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Opentelemetry\\Proto\\": "Opentelemetry/Proto/",
+                    "GPBMetadata\\Opentelemetry\\": "GPBMetadata/Opentelemetry/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+                }
+            ],
+            "description": "PHP protobuf files for communication with OpenTelemetry OTLP collectors/servers.",
+            "keywords": [
+                "Metrics",
+                "apm",
+                "gRPC",
+                "logging",
+                "opentelemetry",
+                "otel",
+                "otlp",
+                "protobuf",
+                "tracing"
+            ],
+            "support": {
+                "source": "https://github.com/opentelemetry-php/gen-otlp-protobuf/tree/1.0.0beta3"
+            },
+            "time": "2023-03-30T09:16:18+00:00"
+        },
+        {
+            "name": "open-telemetry/sdk",
+            "version": "1.0.0beta8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentelemetry-php/sdk.git",
+                "reference": "60cf417539d5818478986462b9b0a62b4e492d87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentelemetry-php/sdk/zipball/60cf417539d5818478986462b9b0a62b4e492d87",
+                "reference": "60cf417539d5818478986462b9b0a62b4e492d87",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "open-telemetry/api": "^1.0",
+                "open-telemetry/context": "^1.0",
+                "open-telemetry/sem-conv": "^1.0",
+                "php": "^7.4 || ^8.0",
+                "php-http/async-client-implementation": "^1.0",
+                "php-http/discovery": "^1.14",
+                "psr/http-factory-implementation": "^1.0",
+                "psr/log": "^1.1|^2.0|^3.0",
+                "symfony/polyfill-mbstring": "^1.23",
+                "symfony/polyfill-php80": "^1.26",
+                "symfony/polyfill-php81": "^1.26",
+                "symfony/polyfill-php82": "^1.26"
+            },
+            "suggest": {
+                "ext-gmp": "To support unlimited number of synchronous metric readers",
+                "ext-mbstring": "To increase performance of string operations"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Common/Util/functions.php",
+                    "Logs/Exporter/_register.php",
+                    "Metrics/MetricExporter/_register.php",
+                    "Propagation/_register.php",
+                    "Trace/SpanExporter/_register.php",
+                    "_autoload.php"
+                ],
+                "psr-4": {
+                    "OpenTelemetry\\SDK\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+                }
+            ],
+            "description": "SDK for OpenTelemetry PHP.",
+            "keywords": [
+                "Metrics",
+                "apm",
+                "logging",
+                "opentelemetry",
+                "otel",
+                "sdk",
+                "tracing"
+            ],
+            "support": {
+                "source": "https://github.com/opentelemetry-php/sdk/tree/1.0.0beta8"
+            },
+            "time": "2023-04-18T12:43:09+00:00"
+        },
+        {
+            "name": "open-telemetry/sem-conv",
+            "version": "1.0.0beta2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/opentelemetry-php/sem-conv.git",
+                "reference": "c9c81fe00b1c184961b72808b8a12c7ca0ce375a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/opentelemetry-php/sem-conv/zipball/c9c81fe00b1c184961b72808b8a12c7ca0ce375a",
+                "reference": "c9c81fe00b1c184961b72808b8a12c7ca0ce375a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OpenTelemetry\\SemConv\\": "."
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "opentelemetry-php contributors",
+                    "homepage": "https://github.com/open-telemetry/opentelemetry-php/graphs/contributors"
+                }
+            ],
+            "description": "Semantic conventions for OpenTelemetry PHP.",
+            "keywords": [
+                "Metrics",
+                "apm",
+                "logging",
+                "opentelemetry",
+                "otel",
+                "semantic conventions",
+                "semconv",
+                "tracing"
+            ],
+            "support": {
+                "source": "https://github.com/opentelemetry-php/sem-conv/tree/1.0.0beta2"
+            },
+            "time": "2022-09-06T12:51:24+00:00"
+        },
+        {
+            "name": "php-http/discovery",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-http/discovery.git",
+                "reference": "1ce09e799044cb5255d735991217408611c67ec4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-http/discovery/zipball/1ce09e799044cb5255d735991217408611c67ec4",
+                "reference": "1ce09e799044cb5255d735991217408611c67ec4",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0|^2.0",
                 "php": "^7.1 || ^8.0"
             },
             "conflict": {
-                "nyholm/psr7": "<1.0"
+                "nyholm/psr7": "<1.0",
+                "zendframework/zend-diactoros": "*"
+            },
+            "provide": {
+                "php-http/async-client-implementation": "*",
+                "php-http/client-implementation": "*",
+                "psr/http-client-implementation": "*",
+                "psr/http-factory-implementation": "*",
+                "psr/http-message-implementation": "*"
             },
             "require-dev": {
+                "composer/composer": "^1.0.2|^2.0",
                 "graham-campbell/phpspec-skip-example-extension": "^5.0",
                 "php-http/httplug": "^1.0 || ^2.0",
                 "php-http/message-factory": "^1.0",
-                "phpspec/phpspec": "^5.1 || ^6.1"
+                "phpspec/phpspec": "^5.1 || ^6.1 || ^7.3",
+                "symfony/phpunit-bridge": "^6.2"
             },
-            "suggest": {
-                "php-http/message": "Allow to use Guzzle, Diactoros or Slim Framework factories"
-            },
-            "type": "library",
+            "default-branch": true,
+            "type": "composer-plugin",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.9-dev"
-                }
+                "class": "Http\\Discovery\\Composer\\Plugin",
+                "plugin-optional": true
             },
             "autoload": {
                 "psr-4": {
@@ -699,7 +1059,7 @@
                     "email": "mark.sagikazar@gmail.com"
                 }
             ],
-            "description": "Finds installed HTTPlug implementations and PSR-7 message factories",
+            "description": "Finds and installs PSR-7, PSR-17, PSR-18 and HTTPlug implementations",
             "homepage": "http://php-http.org",
             "keywords": [
                 "adapter",
@@ -708,13 +1068,14 @@
                 "factory",
                 "http",
                 "message",
+                "psr17",
                 "psr7"
             ],
             "support": {
                 "issues": "https://github.com/php-http/discovery/issues",
-                "source": "https://github.com/php-http/discovery/tree/1.14.3"
+                "source": "https://github.com/php-http/discovery/tree/1.x"
             },
-            "time": "2022-07-11T14:04:40+00:00"
+            "time": "2023-04-03T15:07:29+00:00"
         },
         {
             "name": "php-http/guzzle7-adapter",
@@ -900,89 +1261,22 @@
             "time": "2020-07-07T09:29:14+00:00"
         },
         {
-            "name": "promphp/prometheus_client_php",
-            "version": "v2.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PromPHP/prometheus_client_php.git",
-                "reference": "df77bbcc65bd173f2ffaf40ab4e1ca8716da8ce6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PromPHP/prometheus_client_php/zipball/df77bbcc65bd173f2ffaf40ab4e1ca8716da8ce6",
-                "reference": "df77bbcc65bd173f2ffaf40ab4e1ca8716da8ce6",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": "^7.2|^8.0"
-            },
-            "replace": {
-                "endclothing/prometheus_client_php": "*",
-                "jimdo/prometheus_client_php": "*",
-                "lkaemmerling/prometheus_client_php": "*"
-            },
-            "require-dev": {
-                "guzzlehttp/guzzle": "^6.3|^7.0",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^1.5.4",
-                "phpstan/phpstan-phpunit": "^1.1.0",
-                "phpstan/phpstan-strict-rules": "^1.1.0",
-                "phpunit/phpunit": "^9.4",
-                "squizlabs/php_codesniffer": "^3.6",
-                "symfony/polyfill-apcu": "^1.6"
-            },
-            "suggest": {
-                "ext-apc": "Required if using APCu.",
-                "ext-redis": "Required if using Redis.",
-                "promphp/prometheus_push_gateway_php": "An easy client for using Prometheus PushGateway.",
-                "symfony/polyfill-apcu": "Required if you use APCu on PHP8.0+"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Prometheus\\": "src/Prometheus/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Lukas Kämmerling",
-                    "email": "kontakt@lukas-kaemmerling.de"
-                }
-            ],
-            "description": "Prometheus instrumentation library for PHP applications.",
-            "support": {
-                "issues": "https://github.com/PromPHP/prometheus_client_php/issues",
-                "source": "https://github.com/PromPHP/prometheus_client_php/tree/v2.6.2"
-            },
-            "time": "2022-06-30T03:46:23+00:00"
-        },
-        {
             "name": "psr/http-client",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
-                "reference": "22b2ef5687f43679481615605d7a15c557ce85b1"
+                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-client/zipball/22b2ef5687f43679481615605d7a15c557ce85b1",
-                "reference": "22b2ef5687f43679481615605d7a15c557ce85b1",
+                "url": "https://api.github.com/repos/php-fig/http-client/zipball/0955afe48220520692d2d09f7ab7e0f93ffd6a31",
+                "reference": "0955afe48220520692d2d09f7ab7e0f93ffd6a31",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0 || ^8.0",
-                "psr/http-message": "^1.0"
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "default-branch": true,
             "type": "library",
@@ -1015,9 +1309,9 @@
                 "psr-18"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-client/tree/master"
+                "source": "https://github.com/php-fig/http-client/tree/1.0.2"
             },
-            "time": "2020-09-19T09:12:31+00:00"
+            "time": "2023-04-10T20:12:12+00:00"
         },
         {
             "name": "psr/http-factory",
@@ -1025,17 +1319,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
-                "reference": "5a4f141ac2e5bc35e615134f127e1833158d2944"
+                "reference": "e616d01114759c4c489f93b099585439f795fe35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/5a4f141ac2e5bc35e615134f127e1833158d2944",
-                "reference": "5a4f141ac2e5bc35e615134f127e1833158d2944",
+                "url": "https://api.github.com/repos/php-fig/http-factory/zipball/e616d01114759c4c489f93b099585439f795fe35",
+                "reference": "e616d01114759c4c489f93b099585439f795fe35",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0.0",
-                "psr/http-message": "^1.0"
+                "psr/http-message": "^1.0 || ^2.0"
             },
             "default-branch": true,
             "type": "library",
@@ -1071,32 +1365,31 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-factory/tree/master"
+                "source": "https://github.com/php-fig/http-factory/tree/1.0.2"
             },
-            "time": "2022-07-14T07:21:53+00:00"
+            "time": "2023-04-10T20:10:41+00:00"
         },
         {
             "name": "psr/http-message",
-            "version": "dev-master",
+            "version": "1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "efd67d1dc14a7ef4fc4e518e7dee91c271d524e4"
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/efd67d1dc14a7ef4fc4e518e7dee91c271d524e4",
-                "reference": "efd67d1dc14a7ef4fc4e518e7dee91c271d524e4",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": "^7.2 || ^8.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "1.1.x-dev"
                 }
             },
             "autoload": {
@@ -1125,9 +1418,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-message/tree/master"
+                "source": "https://github.com/php-fig/http-message/tree/1.1"
             },
-            "time": "2019-08-29T13:16:46+00:00"
+            "time": "2023-04-04T09:50:52+00:00"
         },
         {
             "name": "psr/log",
@@ -1230,12 +1523,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "4912000e79dc2d6df029d35d8755be1ed79b6691"
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/4912000e79dc2d6df029d35d8755be1ed79b6691",
-                "reference": "4912000e79dc2d6df029d35d8755be1ed79b6691",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
+                "reference": "e2d1534420bd723d0ef5aec58a22c5fe60ce6f5e",
                 "shasum": ""
             },
             "require": {
@@ -1245,7 +1538,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.2-dev"
+                    "dev-main": "3.3-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -1274,7 +1567,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/main"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.2.1"
             },
             "funding": [
                 {
@@ -1290,7 +1583,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-05-20T13:56:22+00:00"
+            "time": "2023-03-01T10:25:55+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1298,12 +1591,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534"
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
-                "reference": "8ad114f6b39e2c98a8b0e3bd907732c207c2b534",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f9c7affe77a00ae32ca127ca6833d034e6d33f25",
+                "reference": "f9c7affe77a00ae32ca127ca6833d034e6d33f25",
                 "shasum": ""
             },
             "require": {
@@ -1319,7 +1612,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1374,7 +1667,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-30T17:25:47+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
@@ -1382,12 +1675,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936"
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
-                "reference": "7a6ff3f1959bb01aefccb463a0f2cd3d3d2fd936",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
+                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
                 "shasum": ""
             },
             "require": {
@@ -1397,7 +1690,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1458,7 +1751,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/polyfill-php81",
@@ -1466,12 +1759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php81.git",
-                "reference": "707403074c8ea6e2edaf8794b0157a0bfa52157a"
+                "reference": "7581cd600fa9fd681b797d00b02f068e2f13263b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/707403074c8ea6e2edaf8794b0157a0bfa52157a",
-                "reference": "707403074c8ea6e2edaf8794b0157a0bfa52157a",
+                "url": "https://api.github.com/repos/symfony/polyfill-php81/zipball/7581cd600fa9fd681b797d00b02f068e2f13263b",
+                "reference": "7581cd600fa9fd681b797d00b02f068e2f13263b",
                 "shasum": ""
             },
             "require": {
@@ -1481,7 +1774,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1538,7 +1831,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         },
         {
             "name": "symfony/polyfill-php82",
@@ -1546,12 +1839,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php82.git",
-                "reference": "60c8d6a7cc229e443506f7a65eb626c938e04860"
+                "reference": "a2b9e955680ad91faa73b66c34265d013113e524"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/60c8d6a7cc229e443506f7a65eb626c938e04860",
-                "reference": "60c8d6a7cc229e443506f7a65eb626c938e04860",
+                "url": "https://api.github.com/repos/symfony/polyfill-php82/zipball/a2b9e955680ad91faa73b66c34265d013113e524",
+                "reference": "a2b9e955680ad91faa73b66c34265d013113e524",
                 "shasum": ""
             },
             "require": {
@@ -1561,7 +1854,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.27-dev"
+                    "dev-main": "1.28-dev"
                 },
                 "thanks": {
                     "name": "symfony/polyfill",
@@ -1618,13 +1911,16 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-11-03T14:55:06+00:00"
+            "time": "2023-01-26T09:26:14+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "google/protobuf": 20,
+        "open-telemetry/contrib-aws": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
