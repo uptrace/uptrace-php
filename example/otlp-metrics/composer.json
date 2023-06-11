@@ -1,0 +1,23 @@
+{
+  "name": "uptrace/otlp-metrics",
+  "authors": [
+    {
+      "name": "Vladimir Mihailenco",
+      "email": "vladimir.webdev@gmail.com"
+    }
+  ],
+  "require": {
+    "open-telemetry/api": "^1-beta",
+    "open-telemetry/context": "^1-beta",
+    "open-telemetry/sdk": "^1-beta",
+    "open-telemetry/exporter-otlp": "^1-beta",
+    "php-http/guzzle7-adapter": "1.0.0",
+    "google/protobuf": "dev-master"
+  },
+  "minimum-stability": "dev",
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
+}
