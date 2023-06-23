@@ -68,6 +68,11 @@ class DistroBuilder {
         return $this;
     }
 
+    public function setResourceAttributes(array $resourceAttrs): self {
+        $this->resourceAttrs = $resourceAttrs;
+        return $this;
+    }
+
     public function setSampler(SamplerInterface $sampler): self
     {
         $this->sampler = $sampler;
@@ -114,7 +119,7 @@ class DistroBuilder {
             $attrs[ResourceAttributes::SERVICE_VERSION] = $this->serviceVersion;
         }
         if (!empty($this->deploymentEnvironment)) {
-            $attrs[esourceAttributes::DEPLOYMENT_ENVIRONMENT] = $this->deploymentEnvironment;
+            $attrs[ResourceAttributes::DEPLOYMENT_ENVIRONMENT] = $this->deploymentEnvironment;
         }
         return ResourceInfo::create(Attributes::create($attrs));
     }

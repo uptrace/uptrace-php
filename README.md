@@ -9,8 +9,9 @@
 
 ## Introduction
 
-uptrace-php is an OpenTelemery PHP distribution configured to export
-[traces](https://uptrace.dev/opentelemetry/distributed-tracing.html) to Uptrace.
+uptrace-php is a thing wrapper over OpenTelemery PHP that configures Otel SDK to export
+[traces](https://uptrace.dev/opentelemetry/distributed-tracing.html) and
+[metrics](https://uptrace.dev/opentelemetry/metrics.html) to Uptrace.
 
 ## Quickstart
 
