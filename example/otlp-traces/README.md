@@ -1,4 +1,4 @@
-# OpenTelemetry PHP metrics example for Uptrace
+# OpenTelemetry PHP traces example for Uptrace
 
 This example demonstrates how to export OpenTelemetry Metrics to Uptrace using OTLP HTTP exporter.
 
@@ -16,5 +16,4 @@ To run this example, you need to
 UPTRACE_DSN=https://<token>@api.uptrace.dev/<project_id> php main.php
 ```
 
-To view metrics, open [app.uptrace.dev](https://app.uptrace.dev/) and navigate to the Metrics ->
-Explore tab.
+To view the trace, click on the link in the console output.
