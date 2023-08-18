@@ -19,7 +19,7 @@ if (!$dsn) {
 }
 echo 'using DSN: ', $dsn, PHP_EOL;
 
-$resource = ResourceInfoFactory::merge(
+$resource = ResourceInfoFactory::emptyResource()->merge(
     ResourceInfo::create(Attributes::create([
         "service.name" => "test",
         "service.version" => "1.0.0",
