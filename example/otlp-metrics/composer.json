@@ -7,12 +7,12 @@
     }
   ],
   "require": {
-    "open-telemetry/api": "^1-beta",
-    "open-telemetry/context": "^1-beta",
-    "open-telemetry/sdk": "^1-beta",
-    "open-telemetry/exporter-otlp": "^1-beta",
+    "open-telemetry/api": "1.0.0beta13",
+    "open-telemetry/context": "1.0.0beta6",
+    "open-telemetry/sdk": "1.0.0beta17",
+    "open-telemetry/exporter-otlp": "1.0.0beta14",
     "php-http/guzzle7-adapter": "1.0.0",
-    "google/protobuf": "dev-master"
+    "google/protobuf": "3.24.2"
   },
   "minimum-stability": "dev",
   "config": {

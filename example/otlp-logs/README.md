@@ -1,6 +1,6 @@
-# OpenTelemetry PHP traces example for Uptrace
+# OpenTelemetry PHP logs example for Uptrace
 
-This example demonstrates how to export OpenTelemetry Traces to Uptrace using OTLP HTTP exporter.
+This example demonstrates how to export OpenTelemetry Logs to Uptrace using OTLP HTTP exporter.
 
 Install dependencies:
 
@@ -15,5 +15,3 @@ To run this example, you need to
 ```shell
 UPTRACE_DSN=https://<token>@api.uptrace.dev/<project_id> php main.php
 ```
-
-To view the trace, click on the link in the console output.

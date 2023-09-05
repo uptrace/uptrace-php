@@ -20,10 +20,13 @@ use OpenTelemetry\SDK\Trace\SpanProcessor\BatchSpanProcessor;
 use OpenTelemetry\SDK\Trace\SpanExporter\ConsoleSpanExporter;
 use OpenTelemetry\SDK\Metrics\MeterProvider;
 use OpenTelemetry\SDK\Metrics\MetricReader\ExportingReader;
+use OpenTelemetry\SDK\Logs\LoggerProvider;
+use OpenTelemetry\SDK\Logs\Processor\BatchLogRecordProcessor;
 use OpenTelemetry\SemConv\ResourceAttributes;
 use OpenTelemetry\Contrib\Otlp\OtlpHttpTransportFactory;
 use OpenTelemetry\Contrib\Otlp\SpanExporter;
 use OpenTelemetry\Contrib\Otlp\MetricExporter;
+use OpenTelemetry\Contrib\Otlp\LogsExporter;
 use OpenTelemetry\Aws\Xray\IdGenerator;
 
 class DistroBuilder {
@@ -92,10 +95,12 @@ class DistroBuilder {
         $resource = $this->createResource();
         $meterProvider = $this->createMeterProvider($dsn, $resource);
         $tracerProvider = $this->createTracerProvider($dsn, $resource, $meterProvider);
+        $loggerProvider = $this->createLoggerProvider($dsn, $resource);
 
         Sdk::builder()
             ->setTracerProvider($tracerProvider)
             ->setMeterProvider($meterProvider)
+            ->setLoggerProvider($loggerProvider)
             ->setPropagator(TraceContextPropagator::getInstance())
             ->setAutoShutdown(true)
             ->buildAndRegisterGlobal();
@@ -104,7 +109,7 @@ class DistroBuilder {
     }
 
     private function createResource() {
-        return ResourceInfoFactory::merge(
+        return ResourceInfoFactory::emptyResource()->merge(
             $this->createResourceFromAttrs(),
             ResourceInfoFactory::defaultResource()
         );
@@ -162,12 +167,38 @@ class DistroBuilder {
             BatchSpanProcessor::DEFAULT_EXPORT_TIMEOUT,
             BatchSpanProcessor::DEFAULT_MAX_EXPORT_BATCH_SIZE,
             true,
-            $meterProvider
+            //$meterProvider
         );
 
         $spanLimits = (new SpanLimitsBuilder())->build();
         $idGenerator = new IdGenerator();
 
-        return new TracerProvider($processor, $this->sampler, $resource, $spanLimits, $idGenerator);
+        return new TracerProvider(
+            [$processor],
+            $this->sampler,
+            $resource,
+            $spanLimits,
+            $idGenerator,
+        );
+    }
+
+    private function createLoggerProvider(Dsn $dsn, ResourceInfo $resource): LoggerProvider {
+        $transport = $this->transportFactory->create(
+            $dsn->otlpEndpoint.'/v1/logs',
+            'application/json',
+            ['uptrace-dsn' => $dsn->dsn],
+            TransportFactoryInterface::COMPRESSION_GZIP,
+        );
+        $exporter = new LogsExporter($transport);
+
+        $processor = new BatchLogRecordProcessor(
+            $exporter,
+            ClockFactory::getDefault(),
+        );
+
+        return LoggerProvider::builder()
+            ->setResource($resource)
+            ->addLogRecordProcessor($processor)
+            ->build();
     }
 }

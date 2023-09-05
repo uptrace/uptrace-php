@@ -3,7 +3,6 @@
 declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Instrumentation\Globals;
 use OpenTelemetry\API\Trace\SpanKind;
 
 $uptrace = Uptrace\Distro::builder()
@@ -14,7 +13,7 @@ $uptrace = Uptrace\Distro::builder()
     ->buildAndRegisterGlobal();
 
 // Create a tracer. Usually, tracer is a global variable.
-$tracer = Globals::tracerProvider()->getTracer('app_or_package_name');
+$tracer = \OpenTelemetry\API\Globals::tracerProvider()->getTracer('app_or_package_name');
 
 // Create a root span (a trace) to measure some operation.
 $main = $tracer->spanBuilder('main-operation')->startSpan();
