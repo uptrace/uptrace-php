@@ -38,7 +38,6 @@ Run the [basic example](example/basic) below using the DSN from the Uptrace proj
 declare(strict_types=1);
 require __DIR__ . '/../../vendor/autoload.php';
 
-use OpenTelemetry\API\Common\Instrumentation\Globals;
 use OpenTelemetry\API\Trace\SpanKind;
 
 $uptrace = Uptrace\Distro::builder()
@@ -49,7 +48,7 @@ $uptrace = Uptrace\Distro::builder()
     ->buildAndRegisterGlobal();
 
 // Create a tracer. Usually, tracer is a global variable.
-$tracer = Globals::tracerProvider()->getTracer('app_or_package_name');
+$tracer = \OpenTelemetry\API\Globals::tracerProvider()->getTracer('app_or_package_name');
 
 // Create a root span (a trace) to measure some operation.
 $main = $tracer->spanBuilder('main-operation')->startSpan();
@@ -92,5 +91,4 @@ echo $uptrace->traceUrl($main) . PHP_EOL;
 ## Links
 
 - [Examples](example)
-- [Documentation](https://uptrace.dev/get/opentelemetry-php.html)
-- [OpenTelemetry PHP Instrumentations](https://uptrace.dev/opentelemetry/instrumentations/?lang=php)
+- [Get started with OpenTelemetry PHP](https://uptrace.dev/get/opentelemetry-php.html)
