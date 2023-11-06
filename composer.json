@@ -3,12 +3,12 @@
   "description": "OpenTelemetry PHP distribution for Uptrace",
   "type": "library",
   "require": {
-    "open-telemetry/api": "1.0.0beta13",
-    "open-telemetry/context": "1.0.0beta6",
-    "open-telemetry/sdk": "1.0.0beta17",
-    "open-telemetry/exporter-otlp": "1.0.0beta14",
+    "open-telemetry/api": "1.0.0",
+    "open-telemetry/context": "1.0.0",
+    "open-telemetry/sdk": "1.0.0",
+    "open-telemetry/exporter-otlp": "1.0.0",
     "php-http/guzzle7-adapter": "1.0.0",
-    "google/protobuf": "3.24.2",
+    "google/protobuf": "3.25.0",
     "open-telemetry/contrib-aws": "1.0.0beta8"
   },
   "license": "Apache-2.0",

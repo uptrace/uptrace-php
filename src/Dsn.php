@@ -6,14 +6,13 @@ namespace Uptrace;
 
 class Dsn {
     public string $dsn = '';
-    public string $appEndpoint = '';
-    public string $otlpEndpoint = '';
+    public string $siteUrl = '';
+    public string $otlpHttpEndpoint = '';
 
 	private string $scheme = '';
 	private string $host = '';
-	private int $port = 14318;
+	private int $httpPort = 14318;
 
-	private string $projectID = '';
 	private string $token = '';
 
     public function __construct($str) {
@@ -25,8 +24,7 @@ class Dsn {
 
         $this->scheme = $url['scheme'];
         $this->host = $url['host'];
-        $this->port = $url['port'] ?? 0;
-        $this->projectID = $url['path'];
+        $this->httpPort = $url['port'] ?? 0;
         $this->token = $url['user'];
 
         if ($this->host == 'api.uptrace.dev') {
@@ -34,33 +32,39 @@ class Dsn {
         }
 
         if ($this->host != 'uptrace.dev') {
-            switch ($this->port) {
+            switch ($this->httpPort) {
             case 4317:
             case 14317:
                 echo sprintf(
                     'got port %d (OTLP/gRPC), but uptrace-php expects 14318 (OTLP/HTTP)' . PHP_EOL,
-                    $this->port,
+                    $this->httpPort,
                 );
                 break;
             }
         }
 
         $this->dsn = $str;
-        $this->appEndpoint = $this->getAppEndpoint();
-        $this->otlpEndpoint = $this->getOtlpEndpoint();
+        $this->siteUrl = $this->buildSiteUrl();
+        $this->otlpHttpEndpoint = $this->buildOtlpHttpEndpoint();
     }
 
-    private function getAppEndpoint(): string {
+    private function buildSiteUrl(): string {
         if ($this->host == 'uptrace.dev') {
             return 'https://app.uptrace.dev';
         }
-        return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->port);
+        if ($this->httpPort !== 0) {
+            return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->httpPort);
+        }
+        return sprintf('%s://%s', $this->scheme, $this->host);
     }
 
-    private function getOtlpEndpoint(): string {
+    private function buildOtlpHttpEndpoint(): string {
         if ($this->host == 'uptrace.dev') {
             return 'https://otlp.uptrace.dev';
         }
-        return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->port);
+        if ($this->httpPort !== 0) {
+            return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->httpPort);
+        }
+        return sprintf('%s://%s', $this->scheme, $this->host);
     }
 }

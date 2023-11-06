@@ -18,7 +18,12 @@ class Distro {
             $span = Span::getCurrent();
         }
         $context = $span->getContext();
-        return sprintf('%s/traces/%s', $this->dsn->appEndpoint, $context->getTraceId());
+        return sprintf(
+            '%s/traces/%s?span_id=%s',
+            $this->dsn->siteUrl,
+            $context->getTraceId(),
+            $context->getSpanId()
+        );
     }
 
     public static function builder(): DistroBuilder

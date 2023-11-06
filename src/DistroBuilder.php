@@ -133,7 +133,7 @@ class DistroBuilder {
         $reader = new ExportingReader(
             new MetricExporter(
                 $this->transportFactory->create(
-                    $dsn->otlpEndpoint.'/v1/metrics',
+                    $dsn->otlpHttpEndpoint.'/v1/metrics',
                     'application/json',
                     ['uptrace-dsn' => $dsn->dsn],
                     TransportFactoryInterface::COMPRESSION_GZIP,
@@ -152,7 +152,7 @@ class DistroBuilder {
         Dsn $dsn, ResourceInfo $resource, MeterProvider $meterProvider
     ): TracerProvider {
         $transport = $this->transportFactory->create(
-            $dsn->otlpEndpoint.'/v1/traces',
+            $dsn->otlpHttpEndpoint.'/v1/traces',
             'application/json',
             ['uptrace-dsn' => $dsn->dsn],
             TransportFactoryInterface::COMPRESSION_GZIP,
@@ -184,7 +184,7 @@ class DistroBuilder {
 
     private function createLoggerProvider(Dsn $dsn, ResourceInfo $resource): LoggerProvider {
         $transport = $this->transportFactory->create(
-            $dsn->otlpEndpoint.'/v1/logs',
+            $dsn->otlpHttpEndpoint.'/v1/logs',
             'application/json',
             ['uptrace-dsn' => $dsn->dsn],
             TransportFactoryInterface::COMPRESSION_GZIP,
