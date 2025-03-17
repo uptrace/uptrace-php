@@ -33,7 +33,7 @@ $resource = ResourceInfoFactory::emptyResource()->merge(
 $transportFactory = new OtlpHttpTransportFactory();
 
 $transport = $transportFactory->create(
-    'https://otlp.uptrace.dev/v1/logs',
+    'https://api.uptrace.dev/v1/logs',
     'application/json',
     ['uptrace-dsn' => $dsn],
     TransportFactoryInterface::COMPRESSION_GZIP,

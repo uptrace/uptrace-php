@@ -60,7 +60,7 @@ class Dsn {
 
     private function buildOtlpHttpEndpoint(): string {
         if ($this->host == 'uptrace.dev') {
-            return 'https://otlp.uptrace.dev';
+            return 'https://api.uptrace.dev';
         }
         if ($this->httpPort !== 0) {
             return sprintf('%s://%s:%d', $this->scheme, $this->host, $this->httpPort);

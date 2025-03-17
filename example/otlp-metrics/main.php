@@ -31,7 +31,7 @@ $transportFactory = new OtlpHttpTransportFactory();
 $reader = new ExportingReader(
     new MetricExporter(
         $transportFactory->create(
-            'https://otlp.uptrace.dev/v1/metrics',
+            'https://api.uptrace.dev/v1/metrics',
             'application/json',
             ['uptrace-dsn' => $dsn],
             TransportFactoryInterface::COMPRESSION_GZIP,

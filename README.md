@@ -1,17 +1,17 @@
 # Uptrace for PHP
 
-[![Documentation](https://img.shields.io/badge/uptrace-documentation-informational)](https://uptrace.dev/get/opentelemetry-php.html)
+[![Documentation](https://img.shields.io/badge/uptrace-documentation-informational)](https://uptrace.dev/get/opentelemetry-php)
 [![Chat](https://img.shields.io/badge/-telegram-red?color=white&logo=telegram&logoColor=black)](https://t.me/uptrace)
 
-<a href="https://uptrace.dev/get/opentelemetry-php.html">
-  <img src="https://uptrace.dev/get/devicon/php-original.svg" height="200px" />
+<a href="https://uptrace.dev/get/opentelemetry-php">
+  <img src="https://uptrace.dev/devicon/php-original.svg" height="200px" />
 </a>
 
 ## Introduction
 
 uptrace-php is a thing wrapper over OpenTelemery PHP that configures Otel SDK to export
-[traces](https://uptrace.dev/opentelemetry/distributed-tracing.html) and
-[metrics](https://uptrace.dev/opentelemetry/metrics.html) to Uptrace.
+[traces](https://uptrace.dev/opentelemetry/distributed-tracing) and
+[metrics](https://uptrace.dev/opentelemetry/metrics) to Uptrace.
 
 ## Quickstart
 
@@ -91,4 +91,4 @@ echo $uptrace->traceUrl($main) . PHP_EOL;
 ## Links
 
 - [Examples](example)
-- [Get started with OpenTelemetry PHP](https://uptrace.dev/get/opentelemetry-php.html)
+- [Get started with OpenTelemetry PHP](https://uptrace.dev/get/opentelemetry-php)

@@ -12,7 +12,7 @@ receivers:
 
 exporters:
   otlp/uptrace:
-    endpoint: otlp.uptrace.dev:4317
+    endpoint: api.uptrace.dev:4317
     headers: { 'uptrace-dsn': '${UPTRACE_DSN}' }
 
 processors:
